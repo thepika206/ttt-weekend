@@ -43,18 +43,18 @@ function init () {
   render()
 }
 function render(){
+  //render X or O in the space according to the board array
   board.forEach(function(element, idx){
-    if (element === -1){
-      let square = document.getElementById(`sq${idx}`)
-      square.textContent = "O"
-    } else if (element === 1) {
-      let square = document.getElementById(`sq${idx}`)
-      square.textContent = "X"
+    if (element !== null) {
+      document.getElementById(`sq${idx}`).textContent = element === 1 ? "X" : "O"
     }
   })
+  //render a message for who's turn it is if the game is not over
   if (winner === null){
-    console.log('here')
-    turn === -1 ? messageEl.textContent = "O's turn: click any open space" : messageEl.textContent = "O's turn: click any open space"
+    let player = turn === -1 ? 'O' : 'X' 
+    messageEl.textContent = `It's player ${player}'s turn: click any open space"` 
   }
-//! need to return here to provide winner and tie game over messages   
+  //! need to return here to provide winner and tie game over messages   
 }
+
+console.log('sanity check')
