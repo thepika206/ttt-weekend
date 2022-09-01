@@ -16,7 +16,8 @@ section.board {
   grid-gap: 0vmin;
 }
 
-div {
+/* updated this style to be more specific to only the divs within the game board*/
+section.board div {
   border: 3px solid black;
   font-size: 8vmin;
   text-align: center;
