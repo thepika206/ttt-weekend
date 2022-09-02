@@ -18,5 +18,6 @@
 - Credit TTT game starter code here: https://github.com/SEI-Remote/ttt-weekend
 
 ## Other Credit
-- google font 'Indie Flower'
-- paper background: https://unsplash.com/@marjan_blan
+- Google Font - ['Indie Flower' Kimberly Gerwein](https://fonts.google.com/specimen/Indie+Flower?query=indie+flower)
+- Paper background -  [Unsplash - @marjan_blan](https://unsplash.com/@marjan_blan)
+- "Confetti" animation borrowed from [SEI-Remote/confetti](https://github.com/SEI-Remote/confetti)
