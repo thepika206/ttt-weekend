@@ -9,6 +9,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
 }
 
 section.board {
@@ -20,11 +21,21 @@ section.board {
 
 /* updated this style to be more specific to only the divs within the game board*/
 section.board div {
-  border: 3px solid black;
+  border-bottom: 3px solid royalblue;
+  border-right: 3px solid royalblue;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
 }
+
+section.board div.last-row {
+  border-bottom: none;
+}
+
+section.board div.right-column {
+  border-right: none;
+}
+
 section.board div:hover {
   cursor: pointer;
 }
