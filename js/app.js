@@ -85,6 +85,7 @@ function renderFinal(){
     const squareEl = document.getElementById(`sq${boardIdx}`)
     squareEl.classList.add('winner')
   }
+  confetti.start(1000,1,8) //there.  I added the confetti
 }
 
 function handleClick(evt){
