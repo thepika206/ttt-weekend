@@ -16,6 +16,7 @@ const winningCombos = [
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //!Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
+let finalCombo
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -83,17 +84,23 @@ function handleClick(evt){
     turn = turn * -1
   }
   getWinner()
-  console.log('board:', board, 'turn:', turn, 'winner:', winner)
+  console.log('board:', board, 'turn:', turn, 'winner:', winner, 'finalCombo', winningCombos[finalCombo])
   render()
 }
 
 function getWinner(){
   //declare a winner by adding up the board postion values at the winning combos
   //-3 means player O won, 3 means player X won
+  let i = 0
   for (let combo of winningCombos){
     let total = board[combo[0]]+board[combo[1]]+board[combo[2]]
     total === -3 ? winner = -1 : total
     total === 3 ? winner = 1 : total  
+    if (winner !== null) {
+      finalCombo = i
+      return
+    }
+    i ++
   }
   // declare tie if any space is (!null)
   winner = board.some(function(sq){return sq === null}) ? winner : 'T'
