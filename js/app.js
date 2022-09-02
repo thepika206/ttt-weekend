@@ -14,7 +14,7 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board //to be an array representing the state of the 9 spaces on the play area
-let turn //Player O is -1, Player X is 1
+let turn //!Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
 let moves //*counts moves taken, ties occurs on move 9 if no winner
 
@@ -59,15 +59,17 @@ function render(){
       squareEl.textContent = element === 1 ? "X" : "O"
     }
   })
-  if (winner === null){
+  let message 
+  if (winner === 'T') {
+    message = `No empty spaces remain, looks like a tie game`
+  } else if (winner === null) {
     let player = turn === -1 ? 'O' : 'X' 
-    messageEl.textContent = `It's player ${player}'s turn: click any open space"` 
-  } else if (winner !== 'T'){
-    let winningPlayer = winner -1 ? 'O' : 'X' 
-    messageEl.textContent = `The winner is ${winningPlayer}!!`
+    message = `It's player ${player}'s turn: click any open space` 
   } else {
-    messageEl.textContent = `No empty spaces remain, looks like a tie game`
-  }
+    let winningPlayer = winner -1 ? 'O' : 'X' 
+    message = `The winner is ${winningPlayer}!!`
+  } 
+  messageEl.textContent = message
 }
 
 function handleClick(evt){
