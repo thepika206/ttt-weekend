@@ -49,6 +49,7 @@ function init () {
   // board = [1, 1, -1, -1, -1, 1, 1, -1, null] //* uncomment this line for a quick cats game test
   turn = 1
   winner = null
+  finalCombo = null
   console.log(`initial board:`, board, 'turn:', turn, 'winner:', winner)
   render()
 }
@@ -73,6 +74,11 @@ function render(){
     message = `The winner is ${winningPlayer}!!`
   } 
   messageEl.textContent = message
+  if (finalCombo !== null) renderFinal()
+}
+
+function renderFinal(){
+  console.log('renderFinal check')
 }
 
 function handleClick(evt){
