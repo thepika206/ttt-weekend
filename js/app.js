@@ -16,7 +16,7 @@ const winningCombos = [
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //!Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
-let finalCombo
+let finalCombo //if there is a winner: the array position of first relevant winningCombos
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -25,7 +25,7 @@ const messageEl = document.querySelector('#message')
 const resetBtn = document.querySelector('#reset')
 
 /*----------------------------- Event Listeners -----------------------------*/
-//each div in section.board has an id, so evt.target.id will be used to set state of board
+//a listener for a click on the game board where evt.target.id identifies which square was clicked
 squareEls.addEventListener('click',function(evt){
   if (!winner && evt.target.id) handleClick(evt)
 })
@@ -46,7 +46,6 @@ function init () {
     null,
     null,
   ]
-  // board = [1, 1, -1, -1, -1, 1, 1, -1, null] //* uncomment this line for a quick cats game test
   turn = 1
   winner = null
   finalCombo = null
@@ -80,7 +79,7 @@ function render(){
 
 
 function renderFinal(){
-//iterate the winningCombos at [finalCombo]'s values, get the sq el for each value and add 'winner' class
+//called by the main render function if there is a winner to style the board in a winner state
   console.log('renderFinal check')
   for (let boardIdx of winningCombos[finalCombo]){
     const squareEl = document.getElementById(`sq${boardIdx}`)
@@ -91,7 +90,7 @@ function renderFinal(){
 function handleClick(evt){
   let sqIdx = evt.target.id.slice(2)
   if (board[sqIdx]) {
-    return //occupied square, ignore click
+    return //ignore click on occupied squares
   }else{
     board[sqIdx] = turn
     turn = turn * -1
@@ -115,7 +114,7 @@ function getWinner(){
     }
     i ++
   }
-  // declare tie if any space is (!null)
+  // declare tie no winner but all spaces are marked
   winner = board.some(function(sq){return sq === null}) ? winner : 'T'
 }
 
