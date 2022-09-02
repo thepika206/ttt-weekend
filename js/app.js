@@ -8,16 +8,15 @@ const winningCombos = [
   [1,4,7],
   [2,5,8],
   [0,4,8],
-  [6,4,8],
+  [6,4,2],
 ]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //Player O is -1, Player X is 1
-
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
-
+let moves //tracks how many squares have been marked
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -46,6 +45,7 @@ function init () {
     null,
     null,
   ]
+  moves = 0
   turn = 1
   winner = null
   console.log(`initial board:`, board, 'turn:', turn, 'winner:', winner)
@@ -66,8 +66,9 @@ function render(){
   } else if (winner !== 'T'){
     let winningPlayer = winner -1 ? 'O' : 'X' 
     messageEl.textContent = `The winner is ${winningPlayer}!!`
+  } else {
+    messageEl.textContent = `No empty spaces remain, looks like a tie game`
   }
-  //! need to return here to provide winner and tie game over messages   
 }
 
 function handleClick(evt){
@@ -77,21 +78,22 @@ function handleClick(evt){
   }else{
     board[sqIdx] = turn
     turn = turn * -1
+    moves += 1
   }
   getWinner()
-  console.log(`board:`, board, 'turn:', turn, 'winner:', winner)
+  console.log('board:', board, 'moves:',moves, 'turn:', turn, 'winner:', winner)
   render()
 }
 
 function getWinner(){
-  //add up the values of the board at particular indices per winningCombos sub arrays
-  //if the sum equals -3 or 3 then there is a winning combo
+  //add up the values of the board at particular indices per each of the winningCombos trios
+  //if the sum equals -3 means player O won, 3 means player X won
   for (let combo of winningCombos){
     let result = board[combo[0]]+board[combo[1]]+board[combo[2]]
     result === -3 ? winner = -1 : result
-    result === 3 ? winner = 1 : result
+    result === 3 ? winner = 1 : result  
   }
-  // console.log(board[winningCombos[0][0]])
+  winner = (moves === 9 && winner === null) ? 'T' : winner
 }
 
 console.log('sanity check')
