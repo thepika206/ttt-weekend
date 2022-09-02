@@ -16,7 +16,7 @@ const winningCombos = [
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
-let moves //tracks how many squares have been marked
+let moves //*counts moves taken, ties occurs on move 9 if no winner
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -53,13 +53,12 @@ function init () {
 }
 
 function render(){
-  //render X or O in the space according to the board array
   board.forEach(function(element, idx){
     if (element !== null) {
-      document.getElementById(`sq${idx}`).textContent = element === 1 ? "X" : "O"
+      const squareEl = document.getElementById(`sq${idx}`)
+      squareEl.textContent = element === 1 ? "X" : "O"
     }
   })
-  //render a message for who's turn it is if the game is not over or the game over message
   if (winner === null){
     let player = turn === -1 ? 'O' : 'X' 
     messageEl.textContent = `It's player ${player}'s turn: click any open space"` 
