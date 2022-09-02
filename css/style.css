@@ -19,6 +19,13 @@ h1 {
   margin: .5em;
 }
 
+button {
+  color: white;
+  background-color: darkslategray;
+  font-family: 'Indie Flower', Arial, Helvetica, sans-serif;
+}
+
+
 section.board {
   color: darkblue;
   border-color: darkblue;
