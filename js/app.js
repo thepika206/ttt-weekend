@@ -59,10 +59,13 @@ function render(){
       document.getElementById(`sq${idx}`).textContent = element === 1 ? "X" : "O"
     }
   })
-  //render a message for who's turn it is if the game is not over
+  //render a message for who's turn it is if the game is not over or the game over message
   if (winner === null){
     let player = turn === -1 ? 'O' : 'X' 
     messageEl.textContent = `It's player ${player}'s turn: click any open space"` 
+  } else if (winner !== 'T'){
+    let winningPlayer = winner -1 ? 'O' : 'X' 
+    messageEl.textContent = `The winner is ${winningPlayer}!!`
   }
   //! need to return here to provide winner and tie game over messages   
 }
@@ -74,9 +77,21 @@ function handleClick(evt){
   }else{
     board[sqIdx] = turn
     turn = turn * -1
-    console.log(`board:`, board, 'turn:', turn, 'winner:', winner)
   }
+  getWinner()
+  console.log(`board:`, board, 'turn:', turn, 'winner:', winner)
+  render()
 }
 
+function getWinner(){
+  //add up the values of the board at particular indices per winningCombos sub arrays
+  //if the sum equals -3 or 3 then there is a winning combo
+  for (let combo of winningCombos){
+    let result = board[combo[0]]+board[combo[1]]+board[combo[2]]
+    result === -3 ? winner = -1 : result
+    result === 3 ? winner = 1 : result
+  }
+  // console.log(board[winningCombos[0][0]])
+}
 
 console.log('sanity check')
