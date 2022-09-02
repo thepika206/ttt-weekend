@@ -18,3 +18,5 @@
 - Credit TTT game starter code here: https://github.com/SEI-Remote/ttt-weekend
 
 ## Other Credit
+- google font 'Indie Flower'
+- paper background: https://unsplash.com/@marjan_blan

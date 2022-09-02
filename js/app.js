@@ -119,6 +119,3 @@ function getWinner(){
   winner = board.some(function(sq){return sq === null}) ? winner : 'T'
 }
 
-console.log('sanity check')
-
-
