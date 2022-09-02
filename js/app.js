@@ -61,6 +61,7 @@ function render(){
       squareEl.textContent = element === 1 ? 'X' : 'O'
     } else {
       squareEl.textContent = ''
+      squareEl.classList.remove('winner')
     } 
   })
   let message =''
@@ -77,8 +78,14 @@ function render(){
   if (finalCombo !== null) renderFinal()
 }
 
+
 function renderFinal(){
+//iterate the winningCombos at [finalCombo]'s values, get the sq el for each value and add 'winner' class
   console.log('renderFinal check')
+  for (let boardIdx of winningCombos[finalCombo]){
+    const squareEl = document.getElementById(`sq${boardIdx}`)
+    squareEl.classList.add('winner')
+  }
 }
 
 function handleClick(evt){

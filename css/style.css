@@ -25,6 +25,9 @@ section.board div {
   text-align: center;
   vertical-align: middle;
 }
+section.board div:hover {
+  cursor: pointer;
+}
 
 div.winner {
   color: red;
