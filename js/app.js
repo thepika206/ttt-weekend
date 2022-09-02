@@ -27,7 +27,7 @@ const messageEl = document.querySelector('#message')
 /*----------------------------- Event Listeners -----------------------------*/
 //each div in section.board has an id, so evt.target.id will be used to set state of board
 squareEls.addEventListener('click',function(evt){
-  if (evt.target.id) handleClick(evt)
+  if (!winner && evt.target.id) handleClick(evt)
 })
 
 
@@ -68,7 +68,15 @@ function render(){
 }
 
 function handleClick(evt){
-  console.log(evt.target.id)
-  
+  let sqIdx = evt.target.id.slice(2)
+  if (board[sqIdx]) {
+    return //occupied square, ignore click
+  }else{
+    board[sqIdx] = turn
+    turn = turn * -1
+    console.log(`board:`, board, 'turn:', turn, 'winner:', winner)
+  }
 }
+
+
 console.log('sanity check')
