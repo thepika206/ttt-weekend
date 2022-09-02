@@ -7,6 +7,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 section.board {
@@ -22,4 +24,8 @@ section.board div {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+}
+
+div.winner {
+  color: red;
 }
