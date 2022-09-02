@@ -1,5 +1,15 @@
 /*-------------------------------- Constants --------------------------------*/
-
+// this represents the combination of positions of 3 in a row, 1-3 horizontal, 4-6 vertical, and the 7-8 diagonal
+const winningCombos = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [6,4,8],
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -17,13 +27,13 @@ const messageEl = document.querySelector('#message')
 /*----------------------------- Event Listeners -----------------------------*/
 //each div in section.board has an id, so evt.target.id will be used to set state of board
 squareEls.addEventListener('click',function(evt){
-  console.log(evt.target.id)
+  if (evt.target.id) handleClick(evt)
 })
-
 
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
 function init () {
   board = [
     null,
@@ -38,10 +48,10 @@ function init () {
   ]
   turn = 1
   winner = null
-  console.log(`game loaded - board state`, board, 'turn', turn, 'winner', winner)
-  console.log(squareEls)
+  console.log(`initial board:`, board, 'turn:', turn, 'winner:', winner)
   render()
 }
+
 function render(){
   //render X or O in the space according to the board array
   board.forEach(function(element, idx){
@@ -57,4 +67,8 @@ function render(){
   //! need to return here to provide winner and tie game over messages   
 }
 
+function handleClick(evt){
+  console.log(evt.target.id)
+  
+}
 console.log('sanity check')
