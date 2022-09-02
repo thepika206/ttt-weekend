@@ -1,4 +1,4 @@
-console.log('confetti.js loading')
+// console.log('confetti.js loading')
 var confetti = {
 	maxCount: 500,		//set max confetti count
 	speed: 5,			//set the particle animation speed

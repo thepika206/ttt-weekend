@@ -80,7 +80,6 @@ function render(){
 
 function renderFinal(){
 //called by the main render function if there is a winner to style the board in a winner state
-  console.log('renderFinal check')
   for (let boardIdx of winningCombos[finalCombo]){
     const squareEl = document.getElementById(`sq${boardIdx}`)
     squareEl.classList.add('winner')

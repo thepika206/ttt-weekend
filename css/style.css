@@ -25,6 +25,11 @@ button {
   font-family: 'Indie Flower', Arial, Helvetica, sans-serif;
 }
 
+button:hover {
+  cursor: pointer;
+  background-color: slategray;
+}
+
 
 section.board {
   color: darkblue;
