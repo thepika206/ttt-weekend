@@ -14,6 +14,11 @@ body {
   background-size: cover;
 }
 
+body.nes-mode {
+  font-family: 'Press Start 2P', cursive;
+  font-size:medium 
+}
+
 h1 {
   font-size: 3em;
   margin: .5em;

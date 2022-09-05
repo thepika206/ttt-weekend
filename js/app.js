@@ -133,7 +133,8 @@ function handleKeyPress(evt){
   keyPressLog = keyPressLog + evt.key
   // console.log(keyPressLog)
   if (keyPressLog === konami){
-    alert('konami code detected')
+    alert('konami code detected: nes mode activated')
+    document.querySelector('body').classList.add('nes-mode')
   }
   
 }
