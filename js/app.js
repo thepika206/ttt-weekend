@@ -11,12 +11,14 @@ const winningCombos = [
   [6,4,2],
 ]
 
+konami = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba' //I wonder what this is for?
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //!Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
 let finalCombo //if there is a winner: the array position of first relevant winningCombos
+let keyPressLog //a string to track key presses
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -30,6 +32,13 @@ squareEls.addEventListener('click',function(evt){
   if (!winner && evt.target.id) handleClick(evt)
 })
 resetBtn.addEventListener('click', init)
+
+//keyboard eventlisteners
+window.addEventListener("keydown", function (evt) {
+  // console.log(e.key)
+
+  handleKeyPress(evt)
+})
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -49,6 +58,7 @@ function init () {
   turn = 1
   winner = null
   finalCombo = null
+  keyPressLog = ''
   console.log(`initial board:`, board, 'turn:', turn, 'winner:', winner)
   render()
 }
@@ -84,7 +94,7 @@ function renderFinal(){
     const squareEl = document.getElementById(`sq${boardIdx}`)
     squareEl.classList.add('winner')
   }
-  confetti.start(1000,1,8) //there.  I added the confetti
+  confetti.start(8000,8,150) //there.  I added the confetti
 }
 
 function handleClick(evt){
@@ -116,5 +126,12 @@ function getWinner(){
   }
   // declare tie no winner but all spaces are marked
   winner = board.some(function(sq){return sq === null}) ? winner : 'T'
+}
+
+function handleKeyPress(evt){
+  console.log(evt.key)
+  keyPressLog = keyPressLog + evt.key
+  console.log(keyPressLog)
+  // keyPressLog === konami ? console.log(ko)
 }
 
