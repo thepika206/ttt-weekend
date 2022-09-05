@@ -131,7 +131,10 @@ function getWinner(){
 function handleKeyPress(evt){
   console.log(evt.key)
   keyPressLog = keyPressLog + evt.key
-  console.log(keyPressLog)
-  // keyPressLog === konami ? console.log(ko)
+  // console.log(keyPressLog)
+  if (keyPressLog === konami){
+    alert('konami code detected')
+  }
+  
 }
 
