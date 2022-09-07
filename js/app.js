@@ -62,7 +62,7 @@ function init () {
 
 function render(){
   board.forEach(function(element, idx){
-    const squareEl = document.getElementById(`sq${idx}`)
+    const squareEl = squareEls.children[idx]
     if (element !== null) {
       squareEl.textContent = element === 1 ? 'X' : 'O'
     } else {
@@ -70,6 +70,10 @@ function render(){
       squareEl.classList.remove('winner')
     } 
   })
+  renderMessage()
+}
+
+function renderMessage(){
   let message =''
   if (winner === 'T') {
     message = `No empty spaces remain, looks like a tie game`
@@ -96,14 +100,11 @@ function renderFinal(){
 
 function handleClick(evt){
   let sqIdx = evt.target.id.slice(2)
-  if (board[sqIdx]) {
-    return //ignore click on occupied squares
-  }else{
-    board[sqIdx] = turn
-    turn = turn * -1
-  }
+  if (board[sqIdx]) return //ignore click on occupied squares
+  board[sqIdx] = turn
+  turn = turn * -1
   getWinner()
-  // console.log('board:', board, 'turn:', turn, 'winner:', winner, 'finalCombo', winningCombos[finalCombo])  //* commented console logging that may behelpful for troubleshooting game state
+  console.log('board:', board, 'turn:', turn, 'winner:', winner, 'finalCombo', winningCombos[finalCombo])  //* this console logging is helpful for troubleshooting game state
   render()
 }
 
