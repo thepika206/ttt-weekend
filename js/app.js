@@ -35,8 +35,6 @@ resetBtn.addEventListener('click', init)
 
 //keyboard eventlisteners
 window.addEventListener("keydown", function (evt) {
-  // console.log(e.key)
-
   handleKeyPress(evt)
 })
 
@@ -59,7 +57,6 @@ function init () {
   winner = null
   finalCombo = null
   keyPressLog = ''
-  console.log(`initial board:`, board, 'turn:', turn, 'winner:', winner)
   render()
 }
 
@@ -106,7 +103,7 @@ function handleClick(evt){
     turn = turn * -1
   }
   getWinner()
-  console.log('board:', board, 'turn:', turn, 'winner:', winner, 'finalCombo', winningCombos[finalCombo])
+  // console.log('board:', board, 'turn:', turn, 'winner:', winner, 'finalCombo', winningCombos[finalCombo])  //* commented console logging that may behelpful for troubleshooting game state
   render()
 }
 
@@ -129,9 +126,7 @@ function getWinner(){
 }
 
 function handleKeyPress(evt){
-  console.log(evt.key)
   keyPressLog = keyPressLog + evt.key
-  // console.log(keyPressLog)
   if (keyPressLog === konami){
     alert('konami code detected: nes mode activated')
     document.querySelector('body').classList.add('nes-mode')
