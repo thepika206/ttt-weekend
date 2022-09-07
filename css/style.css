@@ -22,6 +22,14 @@ body.nes-mode {
 h1 {
   font-size: 3em;
   margin: .5em;
+  margin-bottom: 0;
+}
+
+h2#message{
+  text-align: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 button {
@@ -69,4 +77,8 @@ section.board div:hover {
 
 div.winner {
   color: red;
+}
+
+p#tagline{
+  margin-top: 0px;
 }
