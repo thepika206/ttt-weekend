@@ -1,5 +1,6 @@
 # Tic Tac Toe Game
 - by Patrick Cheung 2020
+- Deployed to netlify:   https://thepika206-tic-tac-toe.netlify.app/
 - GH link: https://github.com/thepika206/ttt-weekend
 
 
