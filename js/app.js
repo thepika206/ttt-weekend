@@ -11,14 +11,14 @@ const winningCombos = [
   [6,4,2],
 ]
 
-konami = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba' //I wonder what this is for?
+// konami = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba' //I wonder what this is for?
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board //to be an array representing the state of the 9 spaces on the play area
 let turn //!Player O is -1, Player X is 1
 let winner //determines winner state null:no_winner, 1:Player X, -1:Player O, 'T':tie
 let finalCombo //if there is a winner: the array position of first relevant winningCombos
-let keyPressLog //a string to track key presses
+// let keyPressLog //a string to track key presses
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -33,10 +33,10 @@ squareEls.addEventListener('click',function(evt){
 })
 resetBtn.addEventListener('click', init)
 
-//keyboard eventlisteners
-window.addEventListener("keydown", function (evt) {
-  handleKeyPress(evt)
-})
+// //keyboard eventlisteners
+// window.addEventListener("keydown", function (evt) {
+//   handleKeyPress(evt)
+// })
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -126,12 +126,12 @@ function getWinner(){
   winner = board.some(function(sq){return sq === null}) ? winner : 'T'
 }
 
-function handleKeyPress(evt){
-  keyPressLog = keyPressLog + evt.key
-  if (keyPressLog === konami){
-    alert('konami code detected: nes mode activated')
-    document.querySelector('body').classList.add('nes-mode')
-  }
+// function handleKeyPress(evt){
+//   keyPressLog = keyPressLog + evt.key
+//   if (keyPressLog === konami){
+//     alert('konami code detected: nes mode activated')
+//     document.querySelector('body').classList.add('nes-mode')
+//   }
   
-}
+// }
 
